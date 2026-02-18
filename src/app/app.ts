@@ -8,5 +8,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('angular-users-todos');
+  // I used a signal here to make the title reactive, so if i need to update it later it's easy
+  protected readonly title = signal('Nzuzos angular-users-todos');
 }

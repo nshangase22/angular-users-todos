@@ -1,0 +1,95 @@
+<section class="todos-section">
+  <button class="back-btn" (click)="goBack()">&larr; Back to Users</button>
+  <h2>User To-Dos</h2>
+  <div class="todos-list">
+    <div class="todo-card" *ngFor="let todo of todos$ | async">
+      <label>
+        <input type="checkbox" [checked]="todo.completed" disabled />
+        <span [class.completed]="todo.completed">{{ todo.title }}</span>
+      </label>
+    </div>
+  </div>
+  <form (ngSubmit)="addTodo()" class="add-todo-form">
+    <label for="title">New To-Do</label>
+    <input
+      id="title"
+      name="title"
+      [(ngModel)]="newTitle"
+      required
+      placeholder="Enter todo..."
+    />
+    <button type="submit">Add</button>
+  </form>
+</section>
+
+<style>
+  .todos-section {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  .back-btn {
+    background: #23272f;
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+  }
+  .back-btn:hover {
+    background: #343a40;
+  }
+  .todos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .todo-card {
+    background: #f5f6fa;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+  }
+  .todo-card label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+  }
+  .todo-card .completed {
+    text-decoration: line-through;
+    color: #888;
+  }
+  .add-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .add-todo-form input {
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  .add-todo-form button {
+    background: #23272f;
+    color: #fff;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .add-todo-form button:hover {
+    background: #343a40;
+  }
+</style>
